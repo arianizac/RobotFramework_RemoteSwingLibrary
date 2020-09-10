@@ -13,10 +13,10 @@ Test Teardown       Close Application
 ***Variables***
 
 #Quando windows usar \\
-${JNLP_URL}         C:\\temp\\minhaApp.jnlp
+${JNLP}         C:\\temp\\minhaApp.jnlp
 
 ***Test Cases***
-POC Login no Sistema 
+Logar no Sistema com Sucesso 
 #Formato em BDD meramente ilustrativo
 #Que precisa saber aqui é que cada frase do Test Case será implementada em Keywords
 
@@ -25,25 +25,26 @@ POC Login no Sistema
     Então eu quero ver a página principal
 
 ***Keywords****
-#Como declaramos essa palavra reservada no Suite Setup , aqui é a aimplementação para abrir sua apliação
-#Usado timeout para casos de delay para abrir a dialog 
+#Como declaramos essa palavra reservada no Suite Setup , aqui é a implementação para abrir sua aplicação
+#Usado timeout para casos de delay para abrir a Dialog que informará user e senha
 
 Start Test Application
-    Start Application       minhaApp    javaws ${JNLP_URL}  timeout=30
+    Start Application       minhaApp    javaws ${JNLP}  timeout=30
 
 Dado que informe minhas credenciais
     Select Dialog           regexp=^C.* 
-    Type Into Textfield     componentUser        myusername
-    Type Into Textfield     componetpasswor      mypassword
+    Type Into Textfield     componentUser         myusername
+    Type Into Textfield     componentPasswor      mypassword
 
 Quando logar no sistema
 #Voce pode passar o nome do Botao ou o id do Button
     Push Button             NomeBotaoLogin 
 
 Então eu quero ver a página principal
-#Essa implementacao faz a validacao, vai selecionar seu form logado
-#Vai pegar o valor do componentUser
-#Should Be Equal vai verificar se o valor armazenado no componente é o correpondente ao usuario informado no login
+#Essa implementacao faz a validacao de que está logado
+#Então, vai selecionar seu form logado com Select Main Window
+#Vai pegar o valor do componentUser atribuindo a variável  ${textFieldValue} o valor obritdo em Get Textfield Value     componentUser 
+#Should Be Equal vai verificar se o valor armazenado no componente é o correspondente ao usuario informado no login
     Select Main Window
     ${textFieldValue}=     Get Textfield Value     componentUser   
     Should Be Equal        componentUser            ${textFieldValue}
