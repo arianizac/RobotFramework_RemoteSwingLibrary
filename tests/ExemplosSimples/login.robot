@@ -9,7 +9,7 @@ Suite Setup         Start Test Application
 Test Teardown       Close Application
 
 #Utilizando variavel para informar o caminho do meu JNPL 
-#Aqui voce poderia passar o embarcado com java -jar
+
 ***Variables***
 
 #Quando windows usar \\
@@ -18,7 +18,7 @@ ${JNLP}         C:\\temp\\minhaApp.jnlp
 ***Test Cases***
 Logar no Sistema com Sucesso 
 #Formato em BDD meramente ilustrativo
-#Que precisa saber aqui é que cada frase do Test Case será implementada em Keywords
+#O que precisa saber aqui é que cada frase do Test Case será implementada em Keywords
 
     Dado que informe minhas credenciais
     Quando logar no sistema
@@ -49,6 +49,8 @@ Então eu quero ver a página principal
     ${textFieldValue}=     Get Textfield Value     componentUser   
     Should Be Equal        componentUser            ${textFieldValue}
 
+#Aqui será a implementação da palavra reservada utilizada no Test Teardown
+#No Java Swing para achar os elementos é necessário sempre dar foco na Dialog/Form que está trabalhando
 Close Application
     Select Main Window
     Close Window            regexp=^C.*
