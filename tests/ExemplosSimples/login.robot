@@ -1,7 +1,7 @@
 *** Settings ***
 
 Documentation   
-...     Validar RobotFramework com Java Swing usando a Library RemoteSwingLibrary
+...     Objetivo: Fazer um login em aplicação Java Swing usando a Library RemoteSwingLibrary do Robot Framework
 
 #Essa é a forma de importar do Robot
 Library             RemoteSwingLibrary 
@@ -33,8 +33,8 @@ Start Test Application
 
 Dado que informe minhas credenciais
     Select Dialog           regexp=^C.* 
-    Type Into Textfield     componentUser         myusername
-    Type Into Textfield     componentPasswor      mypassword
+    Type Into Textfield     componentUser          myusername
+    Type Into Textfield     componentPassword      mypassword
 
 Quando logar no sistema
 #Voce pode passar o nome do Botao ou o id do Button
